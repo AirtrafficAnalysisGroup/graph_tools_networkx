@@ -5,6 +5,7 @@
 #PBS -e /home/rshaydu/airtraffic/pbsoutput/air_build_graph_out.txt
 
 module add python
+pip3 install networkx --user
 
 cd /home/rshaydu/airtraffic
 

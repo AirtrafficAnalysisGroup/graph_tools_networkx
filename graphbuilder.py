@@ -21,15 +21,12 @@ def build_graph_for_file(file_path, dir_name, name):
 	next(rows) #skip the header
 	for row in rows:
 		row_fil = list(filter(lambda x: type(x) is float, row))
-		if G.has_edge(row_fil[1], row_fil[2]):
-			old = G.get_edge_data(row_fil[1], row_fil[2])
-			G.add_edge(row_fil[1], row_fil[2], weight=old['weight'] + row_fil[3])
+		if G.has_edge(row_fil[0], row_fil[1]):
+			old = G.get_edge_data(row_fil[0], row_fil[1])
+			G.add_edge(row_fil[0], row_fil[1], num_of_people=old['num_of_people'] + row_fil[2], total_price=old['total_price'] + row_fil[3])
 		else:
-			G.add_edge(row_fil[1], row_fil[2], weight=row_fil[3])
+			G.add_edge(row_fil[0], row_fil[1], num_of_people=row_fil[2], total_price=row_fil[3])
 
-	wdict={}
-	for v in G:
-		wdict[v] = G.degree(v, weight='weight')
 	output_file_path = ('graphs/' +dir_name +'/' + name + '.edgelist') 
 	nx.write_edgelist(G, output_file_path);
 
