@@ -1,0 +1,9 @@
+====================================================
+From http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=247
+
+folders with years, files are quarters
+only have origin airportID(*), destination airportID, number of passengers and market fare (MktFare)
+
+
+(*)
+Origin Airport, Airport ID. An identification number assigned by US DOT to identify a unique airport. Use this field for airport analysis across a range of years because an airport can change its airport code and airport codes can be reused. 
