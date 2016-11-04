@@ -32,8 +32,6 @@ def build_graph_for_file(file_path, dir_name, name):
 		wdict[v] = G.degree(v, weight='weight')
 	output_file_path = ('graphs/' +dir_name +'/' + name + '.edgelist') 
 	nx.write_edgelist(G, output_file_path);
-	for a, b, data in sorted(G.edges(data=True), key=lambda abdata: abdata[2]['weight']):
-	       print('{a} {b} {w}'.format(a=a, b=b, w=data['weight']))
 
 def main():
 	if len(sys.argv) != 2:

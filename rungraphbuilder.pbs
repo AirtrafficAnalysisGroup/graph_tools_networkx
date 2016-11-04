@@ -1,0 +1,12 @@
+#!/bin/bash
+#PBS -N air_build_graph
+#PBS -l select=1:ncpus=4:mem=16gb,walltime=72:00:00
+#PBS -o /home/rshaydu/airtraffic/pbsoutput/air_build_graph_err.txt
+#PBS -e /home/rshaydu/airtraffic/pbsoutput/air_build_graph_out.txt
+
+module add python
+
+cd /home/rshaydu/airtraffic
+
+python3 graphbuilder.py 1993
+python3 graphbuilder.py 2015 
