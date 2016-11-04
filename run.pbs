@@ -1,7 +1,0 @@
-#!/bin/bash
-#PBS -N air_data_analyzer
-#PBS -l select=1:ncpus=2:mem=32gb,walltime=72:00:00
-
-cd /home/rshaydu/airtraffic
-source activate airnetworkx
-python analyzer.py

@@ -1,7 +1,7 @@
 #ignore large data files except test.cvs
 data/*
-!data/test.csv
-!data/README
+!*test*
+!*README*
 ============================================================================
 Below: default python .gitignore
 =============================================================================
