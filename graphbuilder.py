@@ -27,7 +27,7 @@ def build_graph_for_file(file_path, dir_name, name):
 		else:
 			G.add_edge(row_fil[0], row_fil[1], num_of_people=row_fil[2], total_price=row_fil[3])
 
-	output_file_path = ('graphs/' +dir_name +'/' + name + '.edgelist') 
+	output_file_path = ('graphs/' + name + '.edgelist') 
 	nx.write_edgelist(G, output_file_path);
 
 def main():
