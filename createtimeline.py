@@ -21,8 +21,8 @@ class TimelineBuilder:
 		self.timeline = defaultdict(list)  # using dictionary of lists to store {["Name of the city"], [list of the values]} 
 	
 	def build(self):
-		years = [2050, 2051]
-		quarters = [1]
+		years = [1993, 2015]
+		quarters = [1,2,3,4]
 		for y in years:
 			for q in quarters:
 				exist = {} #if for particular city there is no entry for this year, replace it with N/A
@@ -52,11 +52,18 @@ class TimelineBuilder:
  
 	def offload_to_file(self, path):
 		f = open(path, 'w+')
+		str_out = "Name of the city"
+		for n in self.timeline["Name of the city"]:
+			str_out += ("," + str(n))
+		str_out += ",\n"
+		f.write(str_out)
 		for key, value in self.timeline.items():
+			if key == "Name of the city":
+				continue
 			str_out = key
 			for n in value:
-				str_out += (" " + str(n))
-			str_out += "\n"
+				str_out += ("," + str(n))
+			str_out += ",\n"
 			f.write(str_out)
 
 	def debug_print(self):
@@ -78,11 +85,11 @@ def main():
 		print("Correct use: python3 createtimeline.py [subfolder with graphs]")
 		sys.exit()
 	path = "graphs/" + sys.argv[1] + "/"
-	lookup_path = "lookup/test_lookup.txt"
+	lookup_path = "lookup/L_AIRPORT_ID.csv_"
 	builder = TimelineBuilder(lookup_path, path)
 	builder.build()
-	builder.debug_print()
-	builder.offload_to_file("text.txt")
+	outfilestr = "timeline_" + sys.argv[1] + ".csv"
+	builder.offload_to_file(outfilestr)
 
 if __name__ == "__main__":
 	main()
