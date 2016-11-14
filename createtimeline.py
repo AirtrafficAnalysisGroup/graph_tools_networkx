@@ -46,8 +46,8 @@ class TimelineBuilder:
 					exist[n] = 1
 				for key, value in exist.items():
 					if value == 0:
-						self.timeline[self.lookup_dict[key]].append("N/A")
-						self.timeline[self.lookup_dict[key]].append("N/A")
+						self.timeline[self.lookup_dict[key]].append(0.0)
+						self.timeline[self.lookup_dict[key]].append(0.0)
 							
  
 	def offload_to_file(self, path):
@@ -57,9 +57,9 @@ class TimelineBuilder:
 			str_out += ("," + str(n))
 		str_out += ",\n"
 		f.write(str_out)
-		for key, value in self.timeline.items():
-			if key == "Name of the city":
-				continue
+		off_timeline = self.timeline.copy()
+		del off_timeline["Name of the city"]
+		for key, value in sorted(off_timeline.items(), key=lambda e: sum(e[1]), reverse=True):
 			str_out = key
 			for n in value:
 				str_out += ("," + str(n))
