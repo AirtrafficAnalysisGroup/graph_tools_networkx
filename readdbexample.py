@@ -15,8 +15,25 @@ c = conn.cursor()
 #for row in c.execute('SELECT * FROM airports'):
 #	print(row)
 
-for year in [1993,1994,1995,2050,2015]:
-	c.execute('SELECT in_degree_people, out_degree_people FROM airports WHERE year=? AND airport_id=?', (year,12892.0))
-	print(c.fetchone())
+c.execute('SELECT * FROM lookup')
+
+#print(list(map(lambda x: x[0], c.description)))
+
+c.execute('SELECT fl_id FROM lookup WHERE fl_name=?', ('Chicago',))
+
+air_id = (c.fetchone())[0]
+
+print(air_id)
+
+for year in range(1993,2015):
+	rows = c.execute('SELECT in_degree_people, out_degree_people FROM airports WHERE year=? AND market_id=?', (year,air_id))
+	print(year)
+	#now sum for all airports
+	total_in = 0
+	total_out = 0
+	for pair in rows:
+		total_in += pair[0]
+		total_out += pair[1]
+	print(total_in, total_out)
 
 conn.close()
