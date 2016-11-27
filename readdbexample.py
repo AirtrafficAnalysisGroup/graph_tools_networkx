@@ -12,11 +12,11 @@ conn = sqlite3.connect(database_path)
 
 c = conn.cursor()
 
-for row in c.execute('SELECT * FROM airports'):
-	print(row)
+#for row in c.execute('SELECT * FROM airports'):
+#	print(row)
 
-#c.execute('SELECT in_degree_people, out_degree_people FROM airports WHERE year=? AND airport_id=?', (1993,12892.0))
-
-#print(c.fetchone())
+for year in [1993,1994,1995,2050,2015]:
+	c.execute('SELECT in_degree_people, out_degree_people FROM airports WHERE year=? AND airport_id=?', (year,12892.0))
+	print(c.fetchone())
 
 conn.close()

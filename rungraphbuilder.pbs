@@ -9,5 +9,7 @@ pip3 install networkx --user
 
 cd /home/rshaydu/airtraffic
 
-python3 graphbuilder.py 1993
-python3 graphbuilder.py 2015 
+for i in {1994..2014}
+do
+	python3 graphbuilder.py $i 
+done

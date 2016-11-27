@@ -9,4 +9,5 @@ pip3 install networkx --user
 
 cd /home/rshaydu/airtraffic
 
-python3 createtimeline.py 19932015
+python3 createdb.py
+python3 createtimeline.py
