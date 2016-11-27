@@ -7,7 +7,7 @@ conn = sqlite3.connect('database/bfdatabase.db')
 
 c = conn.cursor()
 
-c.execute('CREATE TABLE airports (id REAL PRIMARY KEY NOT NULL, market_id REAL NOT NULL, in_degree_people REAL, out_degree_people REAL, in_degree_fare REAL, out_degree_fare REAL, year INT);')
+c.execute('CREATE TABLE airports (id INTEGER PRIMARY KEY NOT NULL, airport_id REAL NOT NULL, market_id REAL NOT NULL, in_degree_people REAL, out_degree_people REAL, in_degree_fare REAL, out_degree_fare REAL, year INT);')
 
 conn.commit()
 
@@ -22,11 +22,6 @@ with open('lookup/merged_lookup.csv', 'r') as lookup:
 		id += 1
 		to_db = (id, row[0], row[1], row[2], row[3], row[4], row[5])
 		c.execute('INSERT INTO lookup VALUES (?,?,?,?,?,?,?)', to_db)
-
-#check that all is fine
-
-for row in c.execute('SELECT * FROM lookup WHERE ec_state=?', ('NC',)):
-	print(row)
 
 conn.commit()
 
