@@ -26,14 +26,19 @@ air_id = (c.fetchone())[0]
 print(air_id)
 
 for year in range(1993,2015):
-	rows = c.execute('SELECT in_degree_people, out_degree_people FROM airports WHERE year=? AND market_id=?', (year,air_id))
+	rows_fl = c.execute('SELECT in_degree_people, out_degree_people FROM airports WHERE year=? AND market_id=?', (year,air_id))
 	print(year)
 	#now sum for all airports
 	total_in = 0
 	total_out = 0
-	for pair in rows:
+	for pair in rows_fl:
 		total_in += pair[0]
 		total_out += pair[1]
-	print(total_in, total_out)
+	rows_ec = c.execute('SELECT mean_value FROM econ_data WHERE year=? AND MSA_id_airline=?', (year, int(air_id)))
+	#sum for all quarters
+	total_ec = 0
+	for value in rows_ec:
+		total_ec += value[0]
+	print(total_in, total_out, "Econ: ", total_ec)
 
 conn.close()
