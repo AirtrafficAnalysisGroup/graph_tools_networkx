@@ -2,8 +2,16 @@
 
 import sqlite3
 import csv
+import sys
 
-conn = sqlite3.connect('database/bfdatabase.db')
+database_path='database/'
+
+if len(sys.argv) == 2:
+	database_path += sys.argv[1]
+else:
+	database_path += 'bfdatabase.db'
+
+conn = sqlite3.connect(database_path)
 
 c = conn.cursor()
 

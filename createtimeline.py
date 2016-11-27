@@ -12,14 +12,23 @@ What should be done:
 
 import sqlite3
 import networkx as nx
+import sys
 
-conn = sqlite3.connect('database/bfdatabase.db')
+database_path='database/'
+
+if len(sys.argv) == 2:
+	database_path += sys.argv[1]
+else:
+	database_path += 'bfdatabase.db'
+
+conn = sqlite3.connect(database_path)
 
 c = conn.cursor()
 
 # like iterate over all files for a year (for all years, ofc)
 
-years = [1993, 2015]
+years = [2050]
+#years = [1993, 2015]
 quarters = [1,2,3,4]
 
 dir_path = 'graphs/'
