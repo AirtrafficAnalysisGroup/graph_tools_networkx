@@ -19,7 +19,7 @@ c.execute('SELECT * FROM lookup')
 
 #print(list(map(lambda x: x[0], c.description)))
 
-c.execute('SELECT fl_id FROM lookup WHERE fl_name=?', ('Chicago',))
+c.execute('SELECT fl_id FROM lookup WHERE fl_name=?', ('New York City',))
 
 air_id = (c.fetchone())[0]
 
