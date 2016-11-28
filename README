@@ -1,14 +1,32 @@
 =================
+
+Dependencies:
+
 Python 3.5.2
 NetworkX
+SQLite
+
+=================
+
+The data can be queried from database/bfdatabase.db
 
 database/bfdatabase.db contains all the data (flight and econ combined)
 
-Please don't commit to master nor to database (i.e. don't run conn.commit())!
+See readdbexample.py for example on how to do that
 
-To get data from database, modify readdbexample.py and then run 'python readdbexample'
+=================
 
 If you're confused about the names of the columns, run:
 
 c.execute('SELECT * FROM <your table>')
 print(list(map(lambda x: x[0], c.description)))
+
+=================
+
+Created by:
+
+Ruslan Shaydulin
+Ehsan Sadrfaridpour
+Clemson University, 2016
+
+=================
