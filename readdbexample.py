@@ -26,7 +26,7 @@ c = conn.cursor()
 
 #print(list(map(lambda x: x[0], c.description)))
 
-c.execute('SELECT fl_id FROM lookup WHERE fl_name=?', ('Atlanta',))
+c.execute('SELECT fl_id FROM lookup WHERE fl_name=?', ('New York City',))
 
 air_id = (c.fetchone())[0]
 
@@ -34,9 +34,9 @@ air_id = (c.fetchone())[0]
 # for all markets
 
 for year in range(1994,2016):
-	total_out = 0
-	total_in = 0
 	for q in range(1,5):
+		total_out = 0
+		total_in = 0
 		rows_fl = c.execute('SELECT in_degree_people, out_degree_people FROM airports WHERE year=? AND market_id=? AND quarter=?', (year,air_id, q))
 		for pair in rows_fl:
 			total_in += pair[0]
@@ -45,7 +45,7 @@ for year in range(1994,2016):
 		total_ec = 0
 		for value in rows_ec:
 			total_ec += value[0]
-	out = str(year)+","+str(total_in+total_out)+","+str(total_ec/4)
-	print(out)
+		out = str(year)+"Q"+str(q)+","+str(total_in+total_out)+","+str(total_ec/4)
+		print(out)
 
 conn.close()
