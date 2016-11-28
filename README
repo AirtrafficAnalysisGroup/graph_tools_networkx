@@ -23,6 +23,11 @@ print(list(map(lambda x: x[0], c.description)))
 
 =================
 
+More documentation for SQLite can be found here:
+https://docs.python.org/3.5/library/sqlite3.html
+
+=================
+
 Created by:
 
 Ruslan Shaydulin
