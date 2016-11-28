@@ -34,36 +34,21 @@ quarters = [1,2,3,4]
 dir_path = 'graphs/'
 
 for y in years:
-	YG=nx.DiGraph() #a graph to hold all the data for a particular year
 	for q in quarters:
 		file_path=(str(y)+'_Q'+str(q)+'.gexf')
 		full_path=(dir_path+file_path)
 		QG=nx.read_gexf(full_path) # QG = "Quarter Graph"
-		#now get it all in Year Graph (YG)
-		for u,v,data in QG.edges_iter(data=True):
-			if YG.has_node(u) is not True:
-				YG.add_node(u, market_id=QG.node[u]['market_id'])
-			if YG.has_node(v) is not True:
-				YG.add_node(v, market_id=QG.node[v]['market_id'])
-			if YG.has_edge(u,v):
-				old = YG.get_edge_data(u,v)
-				YG.add_edge(u,v,num_of_people=old['num_of_people'] + data['num_of_people'], total_price=old['total_price']+data['total_price'])
-			else:
-				YG.add_edge(u,v,num_of_people=data['num_of_people'], total_price=data['total_price'])
-		
-		#now add to the table
 
-
-	for node,data in YG.nodes_iter(data=True):
-		in_peop = YG.in_degree(node, weight='num_of_people')
-		out_peop = YG.out_degree(node, weight='num_of_people')
-		in_price = YG.in_degree(node, weight='total_price')
-		out_price = YG.out_degree(node, weight='total_price')
-		year = y
-		market_id = data['market_id']
-		unique_id = int(float(str(int(float(node))) + str(year))) #this is a mess
-		row = (unique_id, node, market_id, in_peop, out_peop, in_price, out_price, year)
-		c.execute('INSERT INTO airports VALUES (?,?,?,?,?,?,?,?)', row)
+		for node,data in QG.nodes_iter(data=True):
+			in_peop = QG.in_degree(node, weight='num_of_people')
+			out_peop = QG.out_degree(node, weight='num_of_people')
+			in_price = QG.in_degree(node, weight='total_price')
+			out_price = QG.out_degree(node, weight='total_price')
+			market_id = data['market_id']
+			unique_id = int(float(str(int(float(node))) + str(y) + str(q))) #this is a mess
+			row = (unique_id, node, market_id, in_peop, out_peop, in_price, out_price, y, q)
+			c.execute('INSERT INTO airports VALUES (?,?,?,?,?,?,?,?,?)', row)
+	print("Done for ", y)
 
 conn.commit()
 conn.close()

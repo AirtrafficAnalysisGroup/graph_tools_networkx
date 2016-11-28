@@ -11,7 +11,7 @@ c = conn.cursor()
 
 #id INTEGER PRIMARY KEY NOT NULL, MSA_id_economy [0] INTEGER NOT NULL, year [1] INTEGER NOT NULL, quarter [2] INTEGER NOT NULL, mean_value [3]  REAL NOT NULL, MSA_id_airline [4] INTEGER NOT NULL
 
-#c.execute('CREATE TABLE econ_data (id INTEGER PRIMARY KEY NOT NULL, MSA_id_economy INTEGER NOT NULL, year INTEGER NOT NULL, quarter INTEGER NOT NULL, mean_value REAL NOT NULL, MSA_id_airline INTEGER NOT NULL);')
+c.execute('CREATE TABLE econ_data (id INTEGER PRIMARY KEY NOT NULL, MSA_id_economy INTEGER NOT NULL, year INTEGER NOT NULL, quarter INTEGER NOT NULL, mean_value REAL NOT NULL, MSA_id_airline INTEGER NOT NULL);')
 
 with open(econ_table_path, 'r') as econ_t:
 	er = csv.reader(econ_t) #er = econ reader

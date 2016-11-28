@@ -15,7 +15,7 @@ conn = sqlite3.connect(database_path)
 
 c = conn.cursor()
 
-c.execute('CREATE TABLE airports (id INTEGER PRIMARY KEY NOT NULL, airport_id REAL NOT NULL, market_id REAL NOT NULL, in_degree_people REAL, out_degree_people REAL, in_degree_fare REAL, out_degree_fare REAL, year INT);')
+c.execute('CREATE TABLE airports (id INTEGER PRIMARY KEY NOT NULL, airport_id REAL NOT NULL, market_id REAL NOT NULL, in_degree_people REAL, out_degree_people REAL, in_degree_fare REAL, out_degree_fare REAL, year INT, quarter INT);')
 
 conn.commit()
 
