@@ -14,9 +14,8 @@ else:
 # recovery from great recession?
 
 # so for like all the markets (i.e. all market ids)
-# introduce a lag: econ data should lag flight data by say a year
 # get the sum(in_ and out_degree people), sum(in_ and out_ fares)
-# run Pearson
+# if it drops more than a certain percent -- say there is decline there 
 
 conn = sqlite3.connect(database_path)
 
@@ -35,14 +34,14 @@ for m_id in c.execute('SELECT fl_id FROM lookup'):
 # for all markets
 
 for m_id in all_ids:
-	traffic = []
+	traffic = {}
+	traffic_legacy = []
 	employ = []
 	for year in range(1994,2015):
+		total_in = 0
+		total_out = 0
 		for q in range(1,4):
 			rows_fl = c.execute('SELECT in_degree_people, out_degree_people FROM airports WHERE year=? AND market_id=? AND quarter=?', (year,m_id, q))
-			#now sum for all airports
-			total_in = 0
-			total_out = 0
 			for pair in rows_fl:
 				total_in += pair[0]
 				total_out += pair[1]
@@ -51,15 +50,22 @@ for m_id in all_ids:
 			total_ec = 0
 			for value in rows_ec:
 				total_ec += value[0]
-			traffic.append(total_in+total_out)
 			employ.append(total_ec/4)
-	coeff, p_val = scipy.stats.pearsonr(traffic, employ)
-	if sum(traffic) > 5000000.0:
-		names = c.execute('SELECT fl_name, fl_state FROM lookup WHERE fl_id=?', (m_id,))
-		mar_name = ""
-		for n in names:
-			mar_name = (n[0] + ", " + n[1])
-		print(mar_name, "Coeff: ", coeff, "p_val: ", p_val)
+		traffic[total_in+total_out] = year 
+		traffic_legacy.append(total_in+total_out)
+	pr_tr = 1000000000 #previous traffic (i.e. in previous quarter)
+	prpr_tr = pr_tr
+	for q_tr in traffic_legacy:
+		if (float(q_tr)/float(pr_tr)) < 0.95 and (float(pr_tr)/float(prpr_tr)) < 0.95 and sum(traffic_legacy) > 5000000.0:
+			names = c.execute('SELECT fl_name, fl_state FROM lookup WHERE fl_id=?', (m_id,))
+			mar_name = ""
+			for n in names:
+				mar_name = (n[0] + ", " + n[1])
+			print("There was a depression in ", mar_name, "in", traffic[q_tr])
+		if q_tr == 0:
+			continue
+		prpr_tr = pr_tr
+		pr_tr = q_tr
 
 
 conn.close()
