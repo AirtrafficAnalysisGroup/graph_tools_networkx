@@ -26,7 +26,7 @@ c = conn.cursor()
 
 #print(list(map(lambda x: x[0], c.description)))
 
-c.execute('SELECT fl_id FROM lookup WHERE fl_name=?', ('New York City',))
+c.execute('SELECT fl_id FROM lookup WHERE fl_name=?', ('Los Angeles',))
 
 air_id = (c.fetchone())[0]
 
