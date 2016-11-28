@@ -10,5 +10,7 @@ To get data from database, modify readdbexample.py and then run 'python readdbex
 
 If you're confused about the names of the columns, run:
 
+```
 c.execute('SELECT * FROM <your table>')
 print(list(map(lambda x: x[0], c.description)))
+```
