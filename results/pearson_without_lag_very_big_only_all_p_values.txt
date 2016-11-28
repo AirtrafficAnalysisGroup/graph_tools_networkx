@@ -1,0 +1,53 @@
+Albuquerque, NM Coeff:  -0.0924715869399 p_val:  0.471020671099
+Atlanta, GA (Metropolitan Area) Coeff:  0.683990891579 p_val:  6.44345876114e-10
+Austin, TX Coeff:  0.925378417076 p_val:  2.18843502696e-27
+Buffalo, NY Coeff:  nan p_val:  1.0
+Fort Myers, FL Coeff:  0.609090797984 p_val:  1.17712864138e-07
+Charlotte, NC Coeff:  nan p_val:  1.0
+Chicago, IL Coeff:  0.556769719127 p_val:  2.15103400257e-06
+Chicago, IL Coeff:  0.556769719127 p_val:  2.15103400257e-06
+Cincinnati, OH Coeff:  0.208660873488 p_val:  0.100766441257
+Cleveland, OH (Metropolitan Area) Coeff:  0.656537232994 p_val:  5.14663055979e-09
+Columbus, OH Coeff:  0.441102500842 p_val:  0.000296333051496
+Dallas-Fort Worth, TX Coeff:  0.730306117789 p_val:  1.10272404448e-11
+Denver, CO Coeff:  0.843439856601 p_val:  4.15094741676e-18
+Detroit, MI Coeff:  0.0804384412911 p_val:  0.530861169772
+Detroit, MI Coeff:  0.0804384412911 p_val:  0.530861169772
+Hartford, CT Coeff:  0.521430006563 p_val:  1.17613339785e-05
+Houston, TX Coeff:  0.764670047013 p_val:  3.01053571069e-13
+Indianapolis, IN Coeff:  0.530016366834 p_val:  7.92103029183e-06
+Jacksonville, FL Coeff:  0.865268455956 p_val:  5.94954550985e-20
+Kahului, HI Coeff:  nan p_val:  1.0
+Kansas City, MO Coeff:  0.447936274905 p_val:  0.000232083866631
+Kansas City, MO Coeff:  0.447936274905 p_val:  0.000232083866631
+Las Vegas, NV Coeff:  0.972088245118 p_val:  4.08460743423e-40
+Los Angeles, CA (Metropolitan Area) Coeff:  0.577427733765 p_val:  7.25403440929e-07
+Memphis, TN Coeff:  0.300638707804 p_val:  0.0166596740047
+Miami, FL (Metropolitan Area) Coeff:  0.794213633499 p_val:  8.05336490633e-15
+Milwaukee, WI Coeff:  -0.0268689698737 p_val:  0.83442255999
+Minneapolis-St. Paul, MN Coeff:  0.91748179504 p_val:  4.18487445346e-26
+Nashville, TN Coeff:  0.834423323687 p_val:  1.99233027429e-17
+New Orleans, LA Coeff:  0.545901914596 p_val:  3.70265711632e-06
+New York City, NY (Metropolitan Area) Coeff:  0.642786411547 p_val:  1.34786882354e-08
+Omaha, NE Coeff:  0.750852981251 p_val:  1.37331436925e-12
+Orlando, FL Coeff:  0.924491209993 p_val:  3.09733374832e-27
+Philadelphia, PA Coeff:  0.6644055327 p_val:  2.9005597011e-09
+Philadelphia, PA Coeff:  0.6644055327 p_val:  2.9005597011e-09
+Philadelphia, PA Coeff:  0.6644055327 p_val:  2.9005597011e-09
+Phoenix, AZ Coeff:  0.764769215563 p_val:  2.97681375957e-13
+Pittsburgh, PA Coeff:  0.528190591711 p_val:  8.62340133295e-06
+Portland, OR Coeff:  0.689828140143 p_val:  4.0227996121e-10
+Raleigh-Durham, NC Coeff:  0.79049796127 p_val:  1.31066294931e-14
+Reno, NV Coeff:  -0.103115540997 p_val:  0.421274692533
+Sacramento, CA Coeff:  0.805952861582 p_val:  1.61531346257e-15
+Salt Lake City, UT Coeff:  0.809568790259 p_val:  9.63253407058e-16
+San Antonio, TX Coeff:  0.754889478756 p_val:  8.90652961963e-13
+San Diego, CA Coeff:  nan p_val:  1.0
+San Francisco, CA (Metropolitan Area) Coeff:  0.510346382378 p_val:  1.92878340267e-05
+San Juan, PR Coeff:  0.125762741714 p_val:  0.326036743459
+Seattle, WA Coeff:  0.619986174089 p_val:  6.0069883489e-08
+Seattle, WA Coeff:  0.619986174089 p_val:  6.0069883489e-08
+St. Louis, MO Coeff:  0.148203177438 p_val:  0.246380749487
+Tampa, FL (Metropolitan Area) Coeff:  0.889291135546 p_val:  2.14449663497e-22
+Tucson, AZ Coeff:  0.544072862447 p_val:  4.04951016403e-06
+Honolulu, HI Coeff:  -0.419232944118 p_val:  0.000626366476192

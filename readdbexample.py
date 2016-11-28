@@ -39,7 +39,7 @@ for m_id in all_ids:
 	employ = []
 	for year in range(1994,2015):
 		for q in range(1,4):
-			rows_fl = c.execute('SELECT in_degree_people, out_degree_people FROM airports WHERE year=? AND market_id=? AND quarter=?', ((year-1),m_id, q))
+			rows_fl = c.execute('SELECT in_degree_people, out_degree_people FROM airports WHERE year=? AND market_id=? AND quarter=?', (year,m_id, q))
 			#now sum for all airports
 			total_in = 0
 			total_out = 0
