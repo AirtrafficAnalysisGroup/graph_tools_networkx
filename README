@@ -1,3 +1,14 @@
 =================
 Python 3.5.2
 NetworkX
+
+database/bfdatabase.db contains all the data (flight and econ combined)
+
+Please don't commit to master nor to database (i.e. don't run conn.commit())!
+
+To get data from database, modify readdbexample.py and then run 'python readdbexample'
+
+If you're confused about the names of the columns, run:
+
+c.execute('SELECT * FROM <your table>')
+print(list(map(lambda x: x[0], c.description)))
