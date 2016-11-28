@@ -54,7 +54,7 @@ for m_id in all_ids:
 			traffic.append(total_in+total_out)
 			employ.append(total_ec/4)
 	coeff, p_val = scipy.stats.pearsonr(traffic, employ)
-	if p_val < 0.05:
+	if p_val < 0.05 and sum(traffic) > 5000000.0:
 		names = c.execute('SELECT fl_name, fl_state FROM lookup WHERE fl_id=?', (m_id,))
 		mar_name = ""
 		for n in names:
