@@ -14,6 +14,7 @@ else:
 # recovery from great recession?
 
 # so for like all the markets (i.e. all market ids)
+# introduce a lag: econ data should lag flight data by say a year
 # get the sum(in_ and out_degree people), sum(in_ and out_ fares)
 # run Pearson
 
@@ -21,9 +22,8 @@ conn = sqlite3.connect(database_path)
 
 c = conn.cursor()
 
-#for row in c.execute('SELECT * FROM airports'):
+#for row in c.execute('SELECT year FROM econ_data'):
 #	print(row)
-
 
 #print(list(map(lambda x: x[0], c.description)))
 
@@ -39,7 +39,7 @@ for m_id in all_ids:
 	employ = []
 	for year in range(1994,2015):
 		for q in range(1,4):
-			rows_fl = c.execute('SELECT in_degree_people, out_degree_people FROM airports WHERE year=? AND market_id=? AND quarter=?', (year,m_id, q))
+			rows_fl = c.execute('SELECT in_degree_people, out_degree_people FROM airports WHERE year=? AND market_id=? AND quarter=?', ((year-1),m_id, q))
 			#now sum for all airports
 			total_in = 0
 			total_out = 0
@@ -54,13 +54,12 @@ for m_id in all_ids:
 			traffic.append(total_in+total_out)
 			employ.append(total_ec/4)
 	coeff, p_val = scipy.stats.pearsonr(traffic, employ)
-	if p_val < 0.05 and sum(traffic) > 1000000.0:
+	if p_val < 0.05:
 		names = c.execute('SELECT fl_name, fl_state FROM lookup WHERE fl_id=?', (m_id,))
 		mar_name = ""
 		for n in names:
 			mar_name = (n[0] + ", " + n[1])
 		print(mar_name, "Coeff: ", coeff, "p_val: ", p_val)
-
 
 
 conn.close()
